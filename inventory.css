@@ -1,0 +1,31 @@
+:root {
+    --slot-normal: lightgray;
+    --slot-hover: rgb(230, 230, 230);
+
+    --slot-light: white;
+    --slot-dark: grey;
+
+    --slot-border-thickness: 1px;
+    --slot-size: 16px;
+}
+
+body {
+    background-color: black;
+}
+
+.slot {
+    width: var(--slot-size);
+    height: var(--slot-size);
+    background-color: var(--slot-normal);
+
+    margin: 1px;
+    border-left: var(--slot-border-thickness) solid var(--slot-dark);
+    border-top: var(--slot-border-thickness) solid var(--slot-dark);
+
+    border-right: var(--slot-border-thickness) solid var(--slot-light);
+    border-bottom: var(--slot-border-thickness) solid var(--slot-light);
+}
+
+.slot:hover {
+    background-color: var(--slot-hover);
+}
