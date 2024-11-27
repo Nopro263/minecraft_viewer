@@ -1,0 +1,7 @@
+.row {
+    display: flex;
+}
+
+.row.hotbar {
+    margin-top: 5px;
+}

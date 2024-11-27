@@ -29,3 +29,21 @@ body {
 .slot:hover {
     background-color: var(--slot-hover);
 }
+
+.slot.shulker {
+    position: relative;
+}
+
+.slot.shulker > .inventory{
+    display: none;
+    
+    position: absolute;
+    left: var(--slot-size);
+    top: var(--slot-size);
+
+    background-color: blue;
+}
+
+.slot.shulker:hover > .inventory {
+    display: inline-block;
+}
