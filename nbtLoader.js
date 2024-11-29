@@ -15,6 +15,45 @@ const renderInventory = (inventory) => {
     inventory.forEach(element => {
         const slot = document.querySelector('.slot[data-slot="' + element.Slot + '"]:not(.shulker-slot)');
         renderSlot(slot, element);
+
+        if(element.id.endsWith("shulker_box") && element.components) {
+            //console.log(element.components["minecraft:container"])
+            renderShulker(slot, element.components["minecraft:container"]);
+        }
+    });
+}
+
+const renderShulker = (e, inventory) => {
+    let i = 0;
+    const inv = document.createElement("div");
+    e.classList.add("shulker");
+    inv.classList.add("inventory");
+    for (let index = 0; index < 3; index++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
+        for (let index2 = 0; index2 < 9; index2++) {
+            const s = document.createElement("div");
+            s.classList.add("slot");
+            s.classList.add("shulker-slot");
+            s.setAttribute("data-slot", i);
+            row.appendChild(s);
+            i++;
+        }
+
+        inv.appendChild(row);
+    }
+    e.appendChild(inv);
+
+
+    inventory.forEach(element => {
+        const slot = e.querySelector('.shulker-slot[data-slot="' + element.slot + '"]');
+        renderSlot(slot, element.item);
+        
+        console.log(element)
+
+        if(element.item.id.endsWith("shulker_box") && element.item.components) {
+            renderShulker(slot, element.item.components["minecraft:container"]);
+        }
     });
 }
 
