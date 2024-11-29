@@ -38,12 +38,13 @@ body {
     display: none;
     
     position: absolute;
-    left: var(--slot-size);
-    top: var(--slot-size);
+    left: calc(var(--slot-size) / 2);
+    top: calc(var(--slot-size) / 2);
 
     background-color: blue;
 }
 
+.slot.shulker > .inventory:hover,
 .slot.shulker:hover > .inventory {
     display: inline-block;
 }
