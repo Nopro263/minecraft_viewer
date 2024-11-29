@@ -11,9 +11,37 @@
     <script type="module" src="nbtLoader.js"></script>
 
     <script type="module">
-        import { loadFile } from "./nbtLoader.js";
+        import { loadArrayBuffer } from "./nbtLoader.js";
 
-        console.log(await loadFile("/c7cee4c7-c11e-4391-b61d-5303d643b866.dat"));
+        window.addEventListener("dragover" , (ev) => {
+            ev.preventDefault();
+        })
+
+        window.addEventListener("drop", async (ev) => {
+            ev.preventDefault();
+
+            if (ev.dataTransfer.items) {
+                // Use DataTransferItemList interface to access the file(s)
+                [...ev.dataTransfer.items].forEach(async (item, i) => {
+                // If dropped items aren't files, reject them
+                if (item.kind === "file") {
+                    const file = item.getAsFile();
+                    if(file.name.endsWith(".dat")) {
+                        await loadArrayBuffer(await file.arrayBuffer());
+                    }
+                }
+                });
+            } else {
+                // Use DataTransfer interface to access the file(s)
+                [...ev.dataTransfer.files].forEach(async (file, i) => {
+                    if(file.name.endsWith(".dat")) {
+                        await loadArrayBuffer(await file.arrayBuffer());
+                    }
+                });
+            }
+        });
+
+        //console.log(await loadFile("/c7cee4c7-c11e-4391-b61d-5303d643b866.dat"));
     </script>
 </head>
 <body>
