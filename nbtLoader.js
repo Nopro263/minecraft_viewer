@@ -13,6 +13,16 @@ export const loadFile = async (url) => {
 
 const renderInventory = (inventory) => {
     inventory.forEach(element => {
-        console.log(element.Slot + 0)
+        const slot = document.querySelector('.slot[data-slot="' + element.Slot + '"]');
+        console.log(slot, element);
+        if(slot) {
+            //slot.innerHTML = element.count;
+            if(element.count > 1) {
+                slot.setAttribute("data-amount", element.count);
+            } else {
+                slot.setAttribute("data-amount", "");
+            }
+            
+        }
     });
 }

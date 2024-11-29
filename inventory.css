@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: darkgray;
 }
 
 .slot {
@@ -24,6 +24,8 @@ body {
 
     border-right: var(--slot-border-thickness) solid var(--slot-light);
     border-bottom: var(--slot-border-thickness) solid var(--slot-light);
+
+    position: relative;
 }
 
 .slot:hover {
@@ -42,6 +44,17 @@ body {
     top: calc(var(--slot-size) / 2);
 
     background-color: blue;
+    z-index: 1;
+}
+
+.slot::after {
+    content: attr(data-amount);
+    color: white;
+    font-size: calc(var(--slot-size) / 2);
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .slot.shulker > .inventory:hover,
