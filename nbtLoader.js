@@ -8,5 +8,11 @@ export const loadFile = async (url) => {
     // Read the NBT binary with NBTify
     const data = await read(arrayBuffer);
 
-    return data.data.Inventory;
+    renderInventory(data.data.Inventory);
+}
+
+const renderInventory = (inventory) => {
+    inventory.forEach(element => {
+        console.log(element.Slot + 0)
+    });
 }
