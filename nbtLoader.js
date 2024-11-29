@@ -87,8 +87,15 @@ const changeId = (id) => {
         case "Flint_And_Steel":
             return "Flint_and_Steel"
     
+        case "Splash_Potion":
+            return "Splash_Water_Bottle"
+        
         default:
             break;
+    }
+
+    if(id.endsWith("_Smithing_Template")) {
+        return id.replace("_Smithing_Template", "");
     }
 
     return id;
