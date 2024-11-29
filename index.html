@@ -7,24 +7,21 @@
 
     <link rel="stylesheet" href="inventory.css">
     <link rel="stylesheet" href="layout.css">
+
+    <script type="module" src="nbtLoader.js"></script>
+
+    <script type="module">
+        import { loadFile } from "./nbtLoader.js";
+
+        console.log(await loadFile("/c7cee4c7-c11e-4391-b61d-5303d643b866.dat"));
+    </script>
 </head>
 <body>
     <div class="inventory">
         <div class="row">
-            <div class="slot">A</div>
-            <div class="slot">f</div>
-            <div class="slot">d</div>
-            <div class="slot">r</div>
-            <div class="slot">w</div>
             <div class="slot"></div>
             <div class="slot"></div>
             <div class="slot"></div>
-            <div class="slot"></div>
-        </div>
-        <div class="row">
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot">h</div>
             <div class="slot"></div>
             <div class="slot"></div>
             <div class="slot"></div>
@@ -35,7 +32,18 @@
         <div class="row">
             <div class="slot"></div>
             <div class="slot"></div>
-            <div class="slot">e</div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+        <div class="row">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
             <div class="slot"></div>
             <div class="slot"></div>
             <div class="slot"></div>
@@ -44,20 +52,9 @@
             <div class="slot shulker">
                 <div class="inventory">
                     <div class="row">
-                        <div class="slot">A</div>
-                        <div class="slot">f</div>
-                        <div class="slot">d</div>
-                        <div class="slot">r</div>
-                        <div class="slot">w</div>
                         <div class="slot"></div>
                         <div class="slot"></div>
                         <div class="slot"></div>
-                        <div class="slot"></div>
-                    </div>
-                    <div class="row">
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot">h</div>
                         <div class="slot"></div>
                         <div class="slot"></div>
                         <div class="slot"></div>
@@ -68,7 +65,18 @@
                     <div class="row">
                         <div class="slot"></div>
                         <div class="slot"></div>
-                        <div class="slot">e</div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                    </div>
+                    <div class="row">
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
                         <div class="slot"></div>
                         <div class="slot"></div>
                         <div class="slot"></div>
@@ -81,10 +89,10 @@
         </div>
         <div class="row hotbar">
             <div class="slot"></div>
-            <div class="slot">f</div>
             <div class="slot"></div>
             <div class="slot"></div>
-            <div class="slot">j</div>
+            <div class="slot"></div>
+            <div class="slot"></div>
             <div class="slot"></div>
             <div class="slot"></div>
             <div class="slot"></div>
