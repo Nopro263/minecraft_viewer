@@ -13,7 +13,7 @@ export const loadFile = async (url) => {
 
 const renderInventory = (inventory) => {
     inventory.forEach(element => {
-        const slot = document.querySelector('.slot[data-slot="' + element.Slot + '"]');
+        const slot = document.querySelector('.slot[data-slot="' + element.Slot + '"]:not(.shulker-slot)');
         renderSlot(slot, element);
     });
 }
