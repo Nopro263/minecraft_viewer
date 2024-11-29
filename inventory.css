@@ -49,7 +49,7 @@ body {
     left: calc(var(--slot-size) / 2);
     top: calc(var(--slot-size) / 2);
 
-    background-color: blue;
+    background-color: darkgray;
     z-index: 1;
 }
 
