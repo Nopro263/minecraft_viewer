@@ -7,10 +7,20 @@
 
     --slot-border-thickness: 1px;
     --slot-size: 16px;
+
+    --slot-width: calc(var(--slot-border-thickness) * 2 + var(--slot-size));
+    --slot-margin-between: 1px;
+    --slot-margin-outer: 0px;
 }
 
 body {
     background-color: darkgray;
+}
+
+.inventory {
+    border: var(--slot-border-thickness) solid var(--slot-dark);
+
+    width: fit-content;
 }
 
 .slot {
@@ -18,7 +28,7 @@ body {
     height: var(--slot-size);
     background-color: var(--slot-normal);
 
-    margin: 1px;
+    margin: var(--slot-margin-between);
     border-left: var(--slot-border-thickness) solid var(--slot-dark);
     border-top: var(--slot-border-thickness) solid var(--slot-dark);
 

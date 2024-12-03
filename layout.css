@@ -1,5 +1,7 @@
 .row {
     display: flex;
+    
+    max-width: calc(var(--slot-width) * 9 + var(--slot-margin-between) * 8 + var(--slot-margin-outer) * 2);
 }
 
 .row.hotbar {
