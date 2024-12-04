@@ -5,20 +5,27 @@
     --slot-light: white;
     --slot-dark: grey;
 
-    --slot-border-thickness: 1px;
-    --slot-size: 16px;
+    --slot-border-thickness: 5px;
+    --slot-size: 80px;
 
     --slot-width: calc(var(--slot-border-thickness) * 2 + var(--slot-size));
-    --slot-margin-between: 1px;
+    --slot-margin-between: 5px;
     --slot-margin-outer: 0px;
 }
 
 body {
+    font-family: HomeVideo, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
     background-color: darkgray;
 }
 
 .inventory {
-    border: var(--slot-border-thickness) solid var(--slot-dark);
+    /*border: var(--slot-border-thickness) solid var(--slot-dark);*/
+    border-left: var(--slot-border-thickness) solid var(--slot-light);
+    border-top: var(--slot-border-thickness) solid var(--slot-light);
+
+    border-right: var(--slot-border-thickness) solid var(--slot-dark);
+    border-bottom: var(--slot-border-thickness) solid var(--slot-dark);
 
     width: fit-content;
 }
