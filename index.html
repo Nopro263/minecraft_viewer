@@ -11,7 +11,7 @@
     <script type="module" src="nbtLoader.js"></script>
 
     <script type="module">
-        import { loadArrayBuffer } from "./nbtLoader.js";
+        import { loadArrayBuffer, loadFile } from "./nbtLoader.js";
 
         document.querySelector(".inventory").style.display = "none";
 
@@ -47,12 +47,17 @@
             }
         });
 
-        //console.log(await loadFile("/c7cee4c7-c11e-4391-b61d-5303d643b866.dat"));
+        document.querySelector("a").addEventListener("click", async () => {
+            document.querySelector(".drop-area").style.display = "none";
+            document.querySelector(".inventory").style.display = "inline-block";
+            await loadFile("a1e63ac3-f9aa-4498-8569-bed0309c7c28.dat")
+        })
+
     </script>
 </head>
 <body>
     <h1>Minecraft inventory viewer</h1>
-    <h1 class="drop-area">Drop your .dat files here!</h1>
+    <h1 class="drop-area">Drop your .dat files here!<p> or try this one: <a>Example.dat</a></p></h1>
     <div class="inventory" style="display: none;">
         <div class="row">
             <div class="slot" data-slot="9"></div>
