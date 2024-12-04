@@ -20,7 +20,7 @@ const renderInventory = (inventory) => {
         const slot = document.querySelector('.slot[data-slot="' + element.Slot + '"]:not(.shulker-slot)');
         renderSlot(slot, element);
 
-        if(element.id.endsWith("shulker_box") && element.components) {
+        if(element.id.endsWith("shulker_box") && element.components && element.components["minecraft:container"]) {
             //console.log(element.components["minecraft:container"])
             renderShulker(slot, element.components["minecraft:container"]);
         }
@@ -29,6 +29,7 @@ const renderInventory = (inventory) => {
 
 const renderShulker = (e, inventory) => {
     let i = 0;
+    console.log(inventory)
     const inv = document.createElement("div");
     e.classList.add("shulker");
     inv.classList.add("inventory");
@@ -55,7 +56,7 @@ const renderShulker = (e, inventory) => {
         
         console.log(element)
 
-        if(element.item.id.endsWith("shulker_box") && element.item.components) {
+        if(element.item.id.endsWith("shulker_box") && element.item.components && element.item.components["minecraft:container"]) {
             renderShulker(slot, element.item.components["minecraft:container"]);
         }
     });
