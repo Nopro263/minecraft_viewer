@@ -13,6 +13,8 @@
     <script type="module">
         import { loadArrayBuffer } from "./nbtLoader.js";
 
+        document.querySelector(".inventory").style.display = "none";
+
         window.addEventListener("dragover" , (ev) => {
             ev.preventDefault();
         })
@@ -27,6 +29,8 @@
                 if (item.kind === "file") {
                     const file = item.getAsFile();
                     if(file.name.endsWith(".dat")) {
+                        document.querySelector(".drop-area").style.display = "none";
+                        document.querySelector(".inventory").style.display = "inline-block";
                         await loadArrayBuffer(await file.arrayBuffer());
                     }
                 }
@@ -35,6 +39,8 @@
                 // Use DataTransfer interface to access the file(s)
                 [...ev.dataTransfer.files].forEach(async (file, i) => {
                     if(file.name.endsWith(".dat")) {
+                        document.querySelector(".drop-area").style.display = "none";
+                        document.querySelector(".inventory").style.display = "inline-block";
                         await loadArrayBuffer(await file.arrayBuffer());
                     }
                 });
@@ -46,7 +52,8 @@
 </head>
 <body>
     <h1>Minecraft inventory viewer</h1>
-    <div class="inventory">
+    <h1 class="drop-area">Drop your .dat files here!</h1>
+    <div class="inventory" style="display: none;">
         <div class="row">
             <div class="slot" data-slot="9"></div>
             <div class="slot" data-slot="10"></div>

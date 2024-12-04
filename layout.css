@@ -3,6 +3,9 @@
     src: url('/HomeVideo.ttf');
 }
 
+.drop-area {
+    margin-top: 5rem;
+}
 
 .row {
     display: flex;
