@@ -84,7 +84,7 @@ function capitalizeFirstLetter(val) {
 const getItem = (id) => {
     let n = id.split(":")[1].split("_").map((v) => capitalizeFirstLetter(v)).join("_");
     n = changeId(n);
-    return "https://minecraft.wiki/images/Invicon_" + n + ".png";
+    return "https://minecraft.wiki/images/Invicon_" + n + "." + changeType(n, "png");
 }
 
 const changeId = (id) => {
@@ -95,6 +95,15 @@ const changeId = (id) => {
         case "Splash_Potion":
             return "Splash_Water_Bottle"
         
+        case "Gold_Block":
+            return "Block_of_Gold"
+        
+        case "Iron_Block":
+            return "Block_of_Iron"
+
+        case "Slime_Ball":
+            return "Slimeball"
+        
         default:
             break;
     }
@@ -103,5 +112,21 @@ const changeId = (id) => {
         return id.replace("_Smithing_Template", "");
     }
 
+    if(id.endsWith("_Banner_Pattern")) {
+        return "Banner_Pattern";
+    }
+
     return id;
+}
+
+const changeType = (id, type) => {
+    switch (id) {
+        case "Enchanted_Golden_Apple":
+            return "gif"
+        
+        case "Enchanted_Book":
+            return "gif"
+    }
+
+    return type
 }
