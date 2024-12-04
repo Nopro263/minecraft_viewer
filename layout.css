@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'HomeVideo';
-    src: url('../HomeVideo.ttf');
+    src: url('HomeVideo.ttf');
 }
 
 .drop-area {
