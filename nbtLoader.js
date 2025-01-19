@@ -101,7 +101,7 @@ const renderSlot = (slotElement, slotData) => {
         const gl = slotData.components && slotData.components["minecraft:enchantments"]
         if(gl) {
             glint = document.createElement("img");
-            glint.src = "/glint.webp";
+            glint.src = "glint.webp";
             glint.classList.add("glint");
         }
 
