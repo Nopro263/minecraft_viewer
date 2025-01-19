@@ -56,7 +56,7 @@ body {
 
     font-size: xx-large;
     position: absolute;
-    left: -50%;
+    left: calc((var(--slot-size) - 100%) / 2);
     top: 50%;
     background-color: black;
     color: white;

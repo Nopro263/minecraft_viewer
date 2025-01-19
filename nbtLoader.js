@@ -78,7 +78,7 @@ const renderSlot = (slotElement, slotData) => {
 
         const name = document.createElement("p");
         name.innerText = slotData.id.split(":")[1].split("_").map(v => capitalizeFirstLetter(v)).join(" ");
-        if(slotData.components && slotData.components["minecraft:custom_name"]) {
+        if(slotData.components && slotData.components["minecraft:custom_name"] && slotData.id != "minecraft:mace") {
             name.innerText = slotData.components["minecraft:custom_name"].substring(1, slotData.components["minecraft:custom_name"].length - 1);
             name.classList.add("italic");
         }
