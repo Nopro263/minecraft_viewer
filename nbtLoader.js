@@ -53,8 +53,6 @@ const renderShulker = (e, inventory) => {
     inventory.forEach(element => {
         const slot = e.querySelector('.shulker-slot[data-slot="' + element.slot + '"]');
         renderSlot(slot, element.item);
-        
-        console.log(element)
 
         if(element.item.id.endsWith("shulker_box") && element.item.components && element.item.components["minecraft:container"]) {
             renderShulker(slot, element.item.components["minecraft:container"]);
@@ -63,7 +61,6 @@ const renderShulker = (e, inventory) => {
 }
 
 const renderSlot = (slotElement, slotData) => {
-    console.log(slotData)
     if(slotElement) {
         if(slotData.count > 1) {
             slotElement.setAttribute("data-amount", slotData.count);
@@ -74,7 +71,18 @@ const renderSlot = (slotElement, slotData) => {
         const img = document.createElement("img");
         img.src = getItem(slotData.id);
 
+        let glint;
+        const gl = slotData.components && slotData.components["minecraft:enchantments"]
+        if(gl) {
+            glint = document.createElement("img");
+            glint.src = "/glint.webp";
+            glint.classList.add("glint");
+        }
+
         slotElement.appendChild(img);
+        if(gl) {
+            slotElement.appendChild(glint);
+        }
 
         const name = document.createElement("p");
         name.innerText = slotData.id.split(":")[1].split("_").map(v => capitalizeFirstLetter(v)).join(" ");
