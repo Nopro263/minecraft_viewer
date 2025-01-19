@@ -35,3 +35,16 @@ a {
 a:hover {
     color: gray;
 }
+
+span {
+    white-space: nowrap;
+}
+
+.name {
+    display: block;
+    width: fit-content;
+}
+
+.enchanted > p{
+    width: fit-content;
+}

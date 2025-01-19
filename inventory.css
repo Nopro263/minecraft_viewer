@@ -58,7 +58,7 @@ body {
     position: absolute;
     left: calc((var(--slot-size) - 100%) / 2);
     top: 50%;
-    background-color: black;
+    background-color: rgb(66, 66, 66);
     color: white;
     z-index: 1;
 }
@@ -73,6 +73,11 @@ body {
 .slot > p.italic {
     font-style: italic;
 }
+
+.slot > p.italic > .name::after {
+    content: '';
+    padding: 2px;
+  }
 
 .slot:hover {
     background-color: var(--slot-hover);

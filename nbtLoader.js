@@ -15,13 +15,40 @@ export const loadFile = async (url) => {
     loadArrayBuffer(arrayBuffer);
 }
 
+// https://stackoverflow.com/a/41358305
+function convertToRoman(num) {
+    var roman = {
+      M: 1000,
+      CM: 900,
+      D: 500,
+      CD: 400,
+      C: 100,
+      XC: 90,
+      L: 50,
+      XL: 40,
+      X: 10,
+      IX: 9,
+      V: 5,
+      IV: 4,
+      I: 1
+    };
+    var str = '';
+  
+    for (var i of Object.keys(roman)) {
+      var q = Math.floor(num / roman[i]);
+      num -= q * roman[i];
+      str += i.repeat(q);
+    }
+  
+    return str;
+  }
+
 const renderInventory = (inventory) => {
     inventory.forEach(element => {
         const slot = document.querySelector('.slot[data-slot="' + element.Slot + '"]:not(.shulker-slot)');
         renderSlot(slot, element);
 
         if(element.id.endsWith("shulker_box") && element.components && element.components["minecraft:container"]) {
-            //console.log(element.components["minecraft:container"])
             renderShulker(slot, element.components["minecraft:container"]);
         }
     });
@@ -29,7 +56,6 @@ const renderInventory = (inventory) => {
 
 const renderShulker = (e, inventory) => {
     let i = 0;
-    console.log(inventory)
     const inv = document.createElement("div");
     e.classList.add("shulker");
     inv.classList.add("inventory");
@@ -85,10 +111,27 @@ const renderSlot = (slotElement, slotData) => {
         }
 
         const name = document.createElement("p");
-        name.innerText = slotData.id.split(":")[1].split("_").map(v => capitalizeFirstLetter(v)).join(" ");
+        name.innerHTML = `<span class="name">${slotData.id.split(":")[1].split("_").map(v => capitalizeFirstLetter(v)).join(" ")}</span>`;
         if(slotData.components && slotData.components["minecraft:custom_name"] && slotData.id != "minecraft:mace") {
-            name.innerText = slotData.components["minecraft:custom_name"].substring(1, slotData.components["minecraft:custom_name"].length - 1);
+            name.innerHTML = `<span class="name">${slotData.components["minecraft:custom_name"].substring(1, slotData.components["minecraft:custom_name"].length - 1)}</span>`;
             name.classList.add("italic");
+        }
+
+        if(slotData.components && slotData.components["minecraft:stored_enchantments"]) {
+            slotElement.classList.add("enchanted");
+            for (const [key, value] of Object.entries(slotData.components["minecraft:stored_enchantments"].levels))
+            {
+                name.innerHTML += `<br/><span class="enchantment">${key.split(":")[1].split("_").map(v => capitalizeFirstLetter(v)).join(" ")} ${convertToRoman(value)}</span>`;
+            };
+        }
+
+        if(slotData.components && slotData.components["minecraft:enchantments"]) {
+            console.log(slotData.components["minecraft:enchantments"])
+            slotElement.classList.add("enchanted");
+            for (const [key, value] of Object.entries(slotData.components["minecraft:enchantments"].levels))
+            {
+                name.innerHTML += `<br/><span class="enchantment">${key.split(":")[1].split("_").map(v => capitalizeFirstLetter(v)).join(" ")} ${value == 1 ? "" : convertToRoman(value)}</span>`;
+            };
         }
         slotElement.appendChild(name);
     }
