@@ -51,8 +51,35 @@ body {
     image-rendering: pixelated;
 }
 
+.slot > p {
+    display: none;
+
+    font-size: xx-large;
+    position: absolute;
+    left: -50%;
+    top: 50%;
+    background-color: black;
+    color: white;
+    z-index: 1;
+}
+
+.slot.shulker > p {
+    left: calc(var(--slot-size) / 2);
+    top: calc(var(--slot-size) / 2 - 2em + var(--slot-border-thickness));
+    background-color: white;
+    color: black;
+}
+
+.slot > p.italic {
+    font-style: italic;
+}
+
 .slot:hover {
     background-color: var(--slot-hover);
+}
+
+.slot:hover > p {
+    display: unset;
 }
 
 .slot.shulker {

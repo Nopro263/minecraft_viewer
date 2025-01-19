@@ -63,6 +63,7 @@ const renderShulker = (e, inventory) => {
 }
 
 const renderSlot = (slotElement, slotData) => {
+    console.log(slotData)
     if(slotElement) {
         if(slotData.count > 1) {
             slotElement.setAttribute("data-amount", slotData.count);
@@ -74,6 +75,14 @@ const renderSlot = (slotElement, slotData) => {
         img.src = getItem(slotData.id);
 
         slotElement.appendChild(img);
+
+        const name = document.createElement("p");
+        name.innerText = slotData.id.split(":")[1].split("_").map(v => capitalizeFirstLetter(v)).join(" ");
+        if(slotData.components && slotData.components["minecraft:custom_name"]) {
+            name.innerText = slotData.components["minecraft:custom_name"].substring(1, slotData.components["minecraft:custom_name"].length - 1);
+            name.classList.add("italic");
+        }
+        slotElement.appendChild(name);
     }
 }
 
